@@ -1,0 +1,97 @@
+---
+import { Image } from '@astrojs/image/components';
+import crimiro from '../assets/crimiro.webp';
+import mail from '../assets/mail.webp';
+import linkedin from '../assets/linkedin.svg';
+import github from '../assets/github.svg';
+const contactLinks: { icon: string, href: string, label: string }[] = [
+  { icon: linkedin.src, href: 'https://www.linkedin.com/in/crimiro/', label: 'LinkedIn' },
+  { icon: github.src, href: 'https://github.com/Crimiro', label: 'GitHub' },
+]
+---
+<section class="presentation-card-container">
+  <Image src={crimiro} alt="crimiro profile" width={240} height={240} loading="eager" />
+  <div class="presentation-card-info">
+    <h1>
+      Christian Michael Rosales
+    </h1>
+    <h2>
+      A passionate full stack developer and DevOps engineer
+    </h2>
+    <h3>
+      Computer Systems Engineer with 8 years of experience in full stack development, specializing in React, JavaScript, and modern tools. Skilled in building web/mobile apps, custom CI/CD systems, and microservices infrastructure with Docker and Kubernetes.
+    </h3>
+    <div class="contact-links-card">
+      {
+        contactLinks.map(({ icon, href, label }) => (
+        <a href={href} target="_blank" aria-label={label} >
+          <img src={icon} width="20" height="20" alt={label} />
+        </a>
+        ))
+      }
+      <div class="email-container">
+        <Image src={mail} alt="mail icon" width={20} height={20} loading="eager" />
+        <span class="email-container-text">
+          personal@chrisrosales.com
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .presentation-card-container {
+    margin: auto;
+    min-width: 400px;
+    max-width: 850px;
+    /* background-color: lightslategray; */
+    display: flex;
+    padding: 1rem;
+    align-items: center;
+    min-height: 400px;
+  }
+  .presentation-card-image {
+    max-width: 240px;
+    max-height: 240px;
+  }
+  .presentation-card-info {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .open-work-button {
+    width: 100px;
+  }
+  .email-container {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  .email-container-text {
+    font-size: clamp(0.5rem,2vw,1rem);
+  }
+  h1 {
+    font-size: clamp(2rem, 2vw, 2.5rem); 
+  }
+  h2 {
+    font-size: clamp(1rem, 2vw, 1.5rem); 
+  }
+  h3 {
+    font-size: clamp(0.5rem, 1.5vw, 1rem); 
+  }
+  .contact-links-card {
+    display: flex;
+    gap: 12px;
+  }
+  .a-contact {
+    text-decoration: none;
+    color: black;
+    border-radius: 30px;
+    background-color: lightcyan;
+    padding: 0px 1rem;
+  }
+  .a-contact:hover {
+    color: lightcoral;
+  }
+</style>

@@ -1,0 +1,30 @@
+---
+import icon_dev from '../assets/dev.webp';
+---
+<section>
+  <div class="projects-container">
+    <img src={icon_dev.src} alt="source-code" width="50" height="50"><h1>Projects</h1>
+  </div>
+  <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;gap: 10px;">
+    <h1>Under Construction</h1>
+    <p>This website is currently under development. Check back soon to see what we've been working on.</p>
+    <p class="date">Last updated: January 23, 2025</p>
+  </div>
+</section>
+
+<style>
+  section {
+    margin: auto;
+    min-width: 400px;
+    max-width: 850px;
+    /* background-color: lightslategray; */
+    display: flex;
+    padding: 1rem;
+    flex-direction: column;
+  }
+  .projects-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+</style>
