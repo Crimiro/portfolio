@@ -1,0 +1,135 @@
+---
+const { title, description, github, live, image, technologies, duration } = Astro.props;
+---
+
+<article class="card">
+  <img src={image} alt={title} class="card-logo" />
+  <div class="content">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    
+    <div class="technologies">
+      {technologies.map(({ technology }: { technology: { name: string } }) => (
+        <span class="tech-tag">{technology.name}</span>
+      ))}
+    </div>
+
+    <div class="buttons">
+      {github && <a href={github} target="_blank" class="btn github">GitHub</a>}
+      {live && <a href={live} target="_blank" class="btn live">Live Demo</a>}
+    </div>
+
+    <div class="duration">
+      📅 {duration}
+    </div>
+  </div>
+</article>
+
+<style>
+  .card {
+    width: 320px;
+    background: rgba(30, 30, 30, 0.9);
+    border-radius: 16px;
+    padding: 20px 20px 10px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.6);
+  }
+
+  .card-logo {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  h3 {
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+
+  p {
+    color: #ccc;
+    font-size: 1rem;
+    min-height: 100px;
+  }
+
+  /* Tags de tecnologías */
+  .technologies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin: 15px 0;
+    min-height: 100px;
+  }
+
+  .tech-tag {
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 8px 14px;
+    border-radius: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    height: fit-content;
+  }
+
+  .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .btn {
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.3s;
+  }
+
+  .github {
+    background: #333;
+    color: #fff;
+  }
+
+  .github:hover {
+    background: #555;
+  }
+
+  .live {
+    background: #0070f3;
+    color: #fff;
+  }
+
+  .live:hover {
+    background: #005bb5;
+  }
+
+  .duration {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #bbb;
+    font-style: italic;
+  }
+</style>
